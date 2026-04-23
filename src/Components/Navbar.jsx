@@ -1,0 +1,51 @@
+import React from 'react'
+import assets from '../assets/assets'
+
+
+const Navbar = ({theme, settheme, assets}) => {
+  const toggleTheme = () => {
+    settheme(theme === 'light' ? 'dark' : 'light')
+  }
+  
+  return (
+    <div className="flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-24 py-4 sticky top-0 z-20
+     backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-700">
+
+      <img src={theme === 'dark' ? assets.logo_dark : assets.logo} className='w-32 sm:w-40' alt=""/>
+
+      <div className="text-gray-700 dark:text-white sm:text-sm max-sm:w-60
+      max-sm:pl-10 max-sm:fixed top-0 bottom-0 right-o max-sm:min-h-screen
+      max-sm:h-full max-sm:flex-col max-sm:bg-primary max-sm:text-white
+      max-sm:pt-20 flex sm:items-center gap-5 transition-all ">
+
+          <a href="#" className="sm:hover:border-b">
+          Home
+          </a>
+          <a href="#product" className="sm:hover:border-b">
+          Product
+          </a>
+          <a href="#about" className="sm:hover:border-b">
+          About
+          </a>
+          <a href="#contacts" className="sm:hover:border-b">
+          Contact
+          </a>
+      </div>
+
+      {/* Dark Mode Toggle Button */}
+      <button 
+        onClick={toggleTheme}
+        className="p-2 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
+        aria-label="Toggle theme"
+      >
+        <img 
+          src={theme === 'dark' ? assets.sun_icon : assets.moon_icon} 
+          alt={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          className="w-5 h-5"
+        />
+      </button>
+    </div>
+  )
+}
+
+export default Navbar
